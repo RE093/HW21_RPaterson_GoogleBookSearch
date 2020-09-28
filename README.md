@@ -1,6 +1,6 @@
 <br>
   <div align="center">
-    <a href="https://github.com/RE093"><img src="./client/public/assets/RE.png" height="128" width="128" alt="RE"></a>
+    <a href="https://github.com/RE093"><img src="./view/public/assets/RE.png" height="128" width="128" alt="RE"></a>
   </div>
 
 <h4 align="center">Welcome to my React Google Books Search! 👋</h4>
