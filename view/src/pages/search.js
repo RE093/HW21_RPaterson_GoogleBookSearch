@@ -17,7 +17,7 @@ export default function Search() {
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query)
         .then(result => {
             setSearchResults(result.data.items);
-            console.log(result.data.items[0].volumeInfo.authors)
+            console.log(result.data.items)
         })
     }
 
@@ -71,11 +71,15 @@ export default function Search() {
                             key={bookData.id}
                             title={bookData.volumeInfo.title}
                             description={bookData.volumeInfo.description}
-                            author={bookData.volumeInfo.authors.length > 1 ?
-                                bookData.volumeInfo.authors[0] + ", " +
-                                bookData.volumeInfo.authors[1]
+                            author={
+                                bookData.volumeInfo.authors ? 
+                                    bookData.volumeInfo.authors.length > 1 ?
+                                    bookData.volumeInfo.authors[0] + ", " +
+                                    bookData.volumeInfo.authors[1]
+                                    :
+                                    bookData.volumeInfo.authors
                                 :
-                                bookData.volumeInfo.authors
+                                null
                             }
                             link={bookData.volumeInfo.previewLink}
 
