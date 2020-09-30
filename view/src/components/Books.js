@@ -10,7 +10,9 @@ export default function Books(props) {
             <Card>
                 <Card.Header>{ props.title }</Card.Header>
                 <Card.Body>
-                    <Card.Text>
+                    <Card.Text
+                        data-author={ props.author }
+                    >
                         { props.author }
                     </Card.Text>
                     <a 
@@ -24,7 +26,10 @@ export default function Books(props) {
                         { props.description }
                         <img className="book-image" src={ props.image } alt={ props.title } />
                     </Card.Text>
-                    <Button>Save</Button>
+                    <Button
+                        onClick={props.onClick}
+                    >
+                        Save</Button>
                 </Card.Body>
             </Card>
         </div>

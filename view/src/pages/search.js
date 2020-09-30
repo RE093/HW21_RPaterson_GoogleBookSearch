@@ -26,6 +26,24 @@ export default function Search() {
         setQuery(currentValue);
     }
 
+    const handleBookSave = (event) => {
+        event.preventDefault();
+
+        const fetchedData = event.target.parentNode;
+
+        const savedBookData = {
+            title: fetchedData.children[2].children[0].alt,
+            authors: fetchedData.children[0].innerHTML,
+            description: fetchedData.children[2].innerText,
+            image: fetchedData.children[2].children[0].src,
+            link: fetchedData.children[1].href,
+        }
+
+        console.log(savedBookData);
+
+        // axios.post("/api/books", savedBookData);
+    }
+
     return (
         <div>
             <Form onSubmit={handleSearchSubmit}>
@@ -55,13 +73,13 @@ export default function Search() {
                             author={bookData.volumeInfo.authors}
                             link={bookData.volumeInfo.previewLink}
                             image={bookData.volumeInfo.imageLinks.thumbnail}
+                            onClick={handleBookSave}
                         />
                     );
                 })
                 :
                 null
             }
-            
         </div>
     );
 }
