@@ -13,12 +13,12 @@ if (process.env.NODE_ENV === "production") {
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/googlebooks", 
-  // { 
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
-  // useCreateIndex: true,
-  // useFindAndModify: false
-  // }
+  { 
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+  }
 );
 
 require("./controller/book-routes.js")(app);
