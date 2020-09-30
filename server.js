@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -22,6 +23,10 @@ mongoose.connect(
 );
 
 require("./controller/book-routes.js")(app);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./view/build/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
