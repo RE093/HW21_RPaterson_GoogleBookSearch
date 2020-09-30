@@ -4,7 +4,7 @@ module.exports = app => {
 
     // Get all books saved to the database
     app.get("/api/books", (req, res) => {
-        db.Books.find({}, (err, response) => {
+        db.Book.find({}, (err, response) => {
             if (err) {
                 console.log(err)
             }
@@ -14,7 +14,7 @@ module.exports = app => {
 
     // Save a new book to the database
     app.post("/api/books", (req, res) => {
-        db.Books.create({
+        db.Book.create({
             title: req.body.title,
             authors: req.body.authors,
             description: req.body.description,
@@ -27,7 +27,7 @@ module.exports = app => {
     });
 
     app.delete("/api/books/:id", (req, res) => {
-        db.Books.deleteOne({ _id: req.params.id }, (err, response) => {
+        db.Book.deleteOne({ _id: req.params.id }, (err, response) => {
             if (err) {
                 console.log(err)
             }

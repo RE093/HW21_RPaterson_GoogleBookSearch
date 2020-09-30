@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import Books from "../components/Books";
 
 import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style.scss";
 
 export default function Search() {
 
@@ -16,8 +17,7 @@ export default function Search() {
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query)
         .then(result => {
             setSearchResults(result.data.items);
-
-            console.log(searchResults);
+            console.log(result.data.items[0].volumeInfo.authors)
         })
     }
 
@@ -38,15 +38,15 @@ export default function Search() {
             image: fetchedData.children[2].children[0].src,
             link: fetchedData.children[1].href,
         }
-
-        console.log(savedBookData);
-
-        // axios.post("/api/books", savedBookData);
+        axios.post("/api/books", savedBookData)
     }
 
     return (
         <div>
-            <Form onSubmit={handleSearchSubmit}>
+            <Form 
+                onSubmit={handleSearchSubmit}
+                className="search-form"
+            >
                 <Form.Group>
                     <Form.Label>Book Search</Form.Label>
                     <Form.Control 
@@ -57,6 +57,7 @@ export default function Search() {
                     />
                 </Form.Group>
                 <Button
+                    className="search-button"
                     type="submit"
                 >
                     Search
@@ -67,12 +68,24 @@ export default function Search() {
                 searchResults.map(bookData => {
                     return (
                         <Books
-                            key={bookData.volumeInfo.title}
+                            key={bookData.id}
                             title={bookData.volumeInfo.title}
                             description={bookData.volumeInfo.description}
-                            author={bookData.volumeInfo.authors}
+                            author={bookData.volumeInfo.authors.length > 1 ?
+                                bookData.volumeInfo.authors[0] + ", " +
+                                bookData.volumeInfo.authors[1]
+                                :
+                                bookData.volumeInfo.authors
+                            }
                             link={bookData.volumeInfo.previewLink}
-                            image={bookData.volumeInfo.imageLinks.thumbnail}
+
+                            image={
+                                bookData.volumeInfo.imageLinks ? 
+                                bookData.volumeInfo.imageLinks.thumbnail
+                                :
+                                null
+                            }
+
                             onClick={handleBookSave}
                         />
                     );

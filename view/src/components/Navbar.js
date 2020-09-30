@@ -7,17 +7,24 @@ export default function Navbar() {
     return (
         <>
         <Nav>
-            <Nav.Item>
-                <h5>Google Books</h5>
+            <Nav.Item
+                className="navTitle"
+            >
+                <h5>
+                    <img 
+                        className="google-image"
+                        src={require("../assets/google-image.jpg")}
+                        alt="google-image"
+                /> Books</h5>
             </Nav.Item>
-            <Nav.Item>
+            <Nav.Item className="search-nav">
                 <Nav.Link to="/search" href="/search">Search</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+            <Nav.Item className="saved-nav">
                 <Nav.Link to="/saved" href="/saved">Saved</Nav.Link>
             </Nav.Item>
         </Nav>
-        <Jumbotron>
+        <Jumbotron className="jumbo-banner">
         <h1>(React) Google Books Search</h1>
         <h4>
           Search for and Save Books of Interest!
