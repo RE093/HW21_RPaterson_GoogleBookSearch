@@ -9,12 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("view/build"));
 }
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/googlebooks", 
-  { 
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -24,9 +24,9 @@ mongoose.connect(
 
 require("./controller/book-routes.js")(app);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./view/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./view/build/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
