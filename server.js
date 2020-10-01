@@ -24,10 +24,6 @@ mongoose.connect(
 
 require("./controller/book-routes.js")(app);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./view/build/index.html"));
-// });
-
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

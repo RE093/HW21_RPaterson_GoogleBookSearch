@@ -42,9 +42,9 @@
 
 <hr>
 <br>
-  <!-- <div align="center">
-    <a href="https://github.com/RE093"><img src="./src/assets/RE.png" height="128" width="128" alt="RE"></a>
-  </div> -->
+  <div align="center">
+    <a href="https://github.com/RE093"><img src="./view/public/assets/app.png" height="600" alt="RE"></a>
+  </div>
 <br>
 <hr>
 
@@ -58,7 +58,7 @@ n/a
 
 ## Usage
 
-View the app <a href="#">Here!</a>
+View the app <a href="https://ancient-shelf-21698.herokuapp.com/search">Here!</a>
 
 ## License
 
