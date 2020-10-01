@@ -39,7 +39,7 @@ export default function Books(props) {
                         { props.description }
                     </Card.Text>
 
-                    {savedData ? 
+                    {savedData === true ? 
                         <Button
                         className="save-button"
                         onClick={props.onClick}

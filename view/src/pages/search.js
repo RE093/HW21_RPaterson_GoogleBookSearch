@@ -17,7 +17,6 @@ export default function Search() {
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query)
         .then(result => {
             setSearchResults(result.data.items);
-            console.log(result.data.items)
         })
     }
 

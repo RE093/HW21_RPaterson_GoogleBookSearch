@@ -3,7 +3,6 @@ import axios from "axios";
 import Books from "../components/Books";
 import SavedDataContext from "../utils/SavedDataContext";
 
-// import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Saved(props) {
@@ -19,12 +18,11 @@ export default function Saved(props) {
             setRetrievedBooks(result.data);
             setSavedData(true);
         })
-    }, [savedData]);
+    }, [savedData, setSavedData]);
 
     const handleBookDelete = (event) => {
 
         const id = event.currentTarget.parentNode.id;
-        console.log(id)
         axios.delete("/api/books/" + id)
         .then(setSavedData(false));
     }

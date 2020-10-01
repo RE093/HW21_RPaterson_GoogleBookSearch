@@ -14,7 +14,7 @@ export default function Navbar() {
                     <img 
                         className="google-image"
                         src={require("../assets/google-image.jpg")}
-                        alt="google-image"
+                        alt="google"
                 /> Books</h5>
             </Nav.Item>
             <Nav.Item className="search-nav">
